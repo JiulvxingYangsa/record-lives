@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     <mapper namespace="com.jiulvxing.resources.dao.ClassesMapper">
+     <cache></cache>
+   <!--   <resultMap type="com.jiulvxing.resources.bean.PcInformation" id="PcInformationResultMap">
+        <id column="pc_id" jdbcType="INTEGER" property="pcId"/>
+        <result column="pc_image" jdbcType="VARCHAR" property="pcImage"/>
+        <result column="pc_sketch" jdbcType="VARCHAR" property="pcSketch"/>
+        <result column="pc_address" jdbcType="VARCHAR" property="pcAddress"/>
+        <result column="pc_person" jdbcType="VARCHAR" property="pcPerson"/>
+        <result column="pc_time" javaType="VARCHAR" property="pcTime"/>
+     </resultMap> -->
+
+      <insert id="insertAutodyneByAll" parameterType="com.jiulvxing.resources.bean.Autodyne">
+        INSERT INTO  pc_autodyne(a_image , a_sketch , a_address , a_person , a_time , a_author,a_name) VALUES
+        (#{aImage,jdbcType=VARCHAR},#{aSketch,jdbcType=VARCHAR},#{aAddress,jdbcType=VARCHAR},#{aPerson,jdbcType=VARCHAR},#{aTime,jdbcType=VARCHAR},#{aAuthor,jdbcType=VARCHAR},#{aName,jdbcType=VARCHAR})
+     </insert>
+     
+     <insert id="insertFamilyByAll" parameterType="com.jiulvxing.resources.bean.Family">
+        INSERT INTO  pc_family(f_image , f_sketch , f_address , f_person , f_time , f_author,f_name) VALUES
+        (#{fImage,jdbcType=VARCHAR},#{fSketch,jdbcType=VARCHAR},#{fAddress,jdbcType=VARCHAR},#{fPerson,jdbcType=VARCHAR},#{fTime,jdbcType=VARCHAR},#{fAuthor,jdbcType=VARCHAR},#{fName,jdbcType=VARCHAR})
+     </insert>
+     
+     <insert id="insertLiveByAll" parameterType="com.jiulvxing.resources.bean.Live">
+        INSERT INTO  pc_live(l_image , l_sketch , l_address , l_person , l_time , l_author,l_name) VALUES
+        (#{lImage,jdbcType=VARCHAR},#{lSketch,jdbcType=VARCHAR},#{lAddress,jdbcType=VARCHAR},#{lPerson,jdbcType=VARCHAR},#{lTime,jdbcType=VARCHAR},#{lAuthor,jdbcType=VARCHAR},#{lName,jdbcType=VARCHAR})
+     </insert>
+
+</mapper>

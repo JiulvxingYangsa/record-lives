@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+     <mapper namespace="com.jiulvxing.resources.dao.TestMapper">
+     <cache></cache>
+   <!--   <resultMap type="com.jiulvxing.resources.bean.PcInformation" id="PcInformationResultMap">
+        <id column="pc_id" jdbcType="INTEGER" property="pcId"/>
+        <result column="pc_image" jdbcType="VARCHAR" property="pcImage"/>
+        <result column="pc_sketch" jdbcType="VARCHAR" property="pcSketch"/>
+        <result column="pc_address" jdbcType="VARCHAR" property="pcAddress"/>
+        <result column="pc_person" jdbcType="VARCHAR" property="pcPerson"/>
+        <result column="pc_time" javaType="VARCHAR" property="pcTime"/>
+     </resultMap> -->
+     
+     <select id="selectAll" resultType="com.jiulvxing.resources.bean.PcInformation">
+         SELECT pc_id pcId , pc_image pcImage , pc_sketch pcSketch , pc_address pcAddress,pc_person pcPerson , pc_time pcTime, pc_author pcAuthor  FROM pc_information
+     </select>
+     
+     <select id="selectPersonalDataGetAll" resultType="com.jiulvxing.resources.bean.PersonalData">
+     select p_id pId,p_name pName,p_birthday pBirthday,p_tag pTag,i_id iId,p_gender pGender FROM personal_data
+     
+     </select>
+     
+     <insert id="insertPcInformation" parameterType="com.jiulvxing.resources.bean.PcInformation">
+        INSERT INTO  pc_information(pc_image , pc_sketch , pc_address , pc_person , pc_time , pc_author,pc_name) VALUES
+        (#{pcImage,jdbcType=VARCHAR},#{pcSketch,jdbcType=VARCHAR},#{pcAddress,jdbcType=VARCHAR},#{pcPerson,jdbcType=VARCHAR},#{pcTime,jdbcType=VARCHAR},#{pcAuthor,jdbcType=VARCHAR},#{pcName,jdbcType=VARCHAR})
+     </insert>
+
+     <select id="selectById" resultType="com.jiulvxing.resources.bean.PcInformation" useCache="true">
+         SELECT pc_image pcImage , pc_sketch pcSketch , pc_address pcAddress , 
+         pc_person pcPerson , pc_time pcTime , pc_author pcAuthor , pc_name pcName
+         FROM pc_information WHERE pc_id = #{pcId,jdbcType=INTEGER}
+     </select>
+</mapper>

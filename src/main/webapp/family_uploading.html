@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="static/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<!-- <script type="text/javascript" src="static/bootstrap-3.3.7/bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script> -->
+		<script type="text/javascript" src="static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="static/js/template-web.js"></script>
+		<link rel="stylesheet" href="static/css/index.css" />
+		<title>family</title>
+	</head>
+<script type="text/javascript">
+    function showPreview(source) {
+      var file = source.files[0];
+      if(window.FileReader) {
+          var fr = new FileReader();
+          console.log(fr);
+          var portrait = document.getElementById('portrait');
+          fr.onloadend = function(e) {
+            portrait.src = e.target.result;
+          };
+          fr.readAsDataURL(file);
+          portrait.style.display = 'block';
+      }
+    }
+</script>   
+
+</head>
+<body>
+<div style="width: 100%;height: 20px;background-color: #449D44;"></div>
+	<div style="width: 500px;height:1000px;margin-left: 36%; margin-top: 100px;">
+
+	 <span style="text-align: center;"><h2>添加文件</h2></span>
+	 
+	<form action="insertFamily" method="post" enctype="multipart/form-data">
+	    设备：<input type="text" name="fImage" id="fImage" placeholder="图片拍摄设备" /><br/><br/>
+	    图片名字：<input type="text" name="fName" id="fName" placeholder="图片名字" /><br/><br/>
+		图片：
+		<input type="file" name="file" class="btn btn-info" onchange="showPreview(this)" /><br/><br/>
+    	<img id="portrait" src="" style="display:none;width: 100px;height:100px;" /><br/><br/>
+		图片简述：<input type="text" name="fSketch" id="fSketch" placeholder="图片简述语" /><br/><br/>
+		地        址：<input type="text" name="fAddress" id="fAddress" placeholder="拍摄地址"/><br/><br/>
+		人        物：<input type="text" name="fPerson" id="fPerson" placeholder="跟随同伴"/><br/><br/>
+		拍摄时间：<input type="date" name="fTime" id="fTime" placeholder="拍摄时间"><br/><br/>
+		拍  摄  者：<input type="text" name="fAuthor" id="fAuthor" placeholder="拍摄者"/><br/><br/>
+			     <input class="btn btn-success" type="submit" value="提交"><br/><br/>
+			     <a href="http://localhost:8088/record-lives/index.html"><input class="btn btn-success" type="button" value="返回首页"></a>
+	</form>
+	</div>
+</body>
+
+
+</html>

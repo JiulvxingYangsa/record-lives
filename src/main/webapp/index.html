@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="static/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+		<script type="text/javascript" src="static/js/jquery.min.js" ></script>
+		<script type="text/javascript" src="static/js/template-web.js"></script>
+		<link rel="stylesheet" href="static/css/index.css" />
+		<title></title>
+	</head>
+   
+    <!-- 定义个人资料模板 -->
+    <script type="text/html"id="tpl">
+           <ul>
+			  <li>姓名：{{pName}}</li>
+              <li>性别：{{pGender}}</li>
+			  <li>生日：{{pBirthday}}</li>
+			  <li>座右铭：{{pTag}}</li>
+		   </ul>
+    </script>
+    
+    <!-- 分页模板 -->
+    <script type="text/html"id="pagingTpl">
+          <span id="paging">当前 {{pageNum}}页，总 {{ pages}}页，总 {{total}}条记录</span><br/>
+        	
+            <ul class="pagination" id="nav_ul">
+              <li id="home_page"><a href="#">首页</a></li>
+			  <li><a href="#" id="next_page">«</a></li>
+               <span id="span_li">
+			  {{each navigatepageNums itme}}
+			  <li><a>{{itme}}</a></li>
+			  {{/each}}
+	           </span>
+			  <li><a href="#" id="up_page">»</a></li>
+			  <li id="back_page"><a href="#">末页</a></li>
+			</ul>	 
+    </script>
+    
+    <!-- 图片查询内容展示模板 -->
+    <script type="text/html" id="tables">
+                <table id="table">
+                 <tr>
+	             	<td class="td" align="center">
+	             		<div class="divs1">
+	             		  <a href="http://localhost:8088/record-lives/loald/{{pcImage}}"><img src="http://localhost:8088/record-lives/loald/{{pcImage}}"class="imgs1"></a>
+	             		  	<ul>
+	             				<li>介绍：{{pcSketch}}</li>
+	             				<li>地点：{{pcAddress}}</li>
+	             				<li>作者：{{pcAuthor}}</li>
+	             				<li>人物：{{pcPerson}}</li>
+	             				<li>时间：{{pcTime}}</li>
+	             			</ul>
+	             	    </div>
+	             	</td>
+                </tr>
+              </table>
+    </script>
+    
+    <script type="text/html" id="tables_travel">
+         
+               
+                <table id="table">
+                 {{each list  itme}}
+                 <tr>
+	             	<td class="td" align="center">
+	             		<div class="divs1">
+	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.pcImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.pcImage}}"class="imgs1"></a>
+	             		  	<ul>
+	             				<li>介绍： {{itme.pcSketch}}</li>
+	             				<li>地点： {{itme.pcAddress}}</li>
+	             				<li>作者： {{itme.pcAuthor}}</li>
+	             				<li>人物： {{itme.pcPerson}}</li>
+	             				<li>时间： {{itme.pcTime}}</li>
+
+	             			</ul>
+	             	    </div>
+	             	</td>               
+                </tr>
+                {{/each}}
+              </table>
+            
+         
+
+    </script>
+    
+     <script type="text/html" id="tables_travel1">
+         
+               
+                <table id="table">
+                 {{each list  itme}}
+                 <tr>
+	             	<td class="td" align="center">
+	             		<div class="divs1">
+	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.lImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.lImage}}"class="imgs1"></a>
+	             		  	<ul>
+	             				<li>介绍： {{itme.lSketch}}</li>
+	             				<li>地点： {{itme.lAddress}}</li>
+	             				<li>作者： {{itme.lAuthor}}</li>
+	             				<li>人物： {{itme.lPerson}}</li>
+	             				<li>时间： {{itme.lTime}}</li>
+
+	             			</ul>
+	             	    </div>
+	             	</td>               
+                </tr>
+                {{/each}}
+              </table>
+    </script>
+   
+    <script type="text/html" id="tables_travel2">
+         
+               
+                <table id="table">
+                 {{each list  itme}}
+                 <tr>
+	             	<td class="td" align="center">
+	             		<div class="divs1">
+	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.aImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.aImage}}"class="imgs1"></a>
+	             		  	<ul>
+	             				<li>介绍： {{itme.aSketch}}</li>
+	             				<li>地点： {{itme.aAddress}}</li>
+	             				<li>作者： {{itme.aAuthor}}</li>
+	             				<li>人物： {{itme.aPerson}}</li>
+	             				<li>时间： {{itme.aTime}}</li>
+
+	             			</ul>
+	             	    </div>
+	             	</td>               
+                </tr>
+                {{/each}}
+              </table>
+    </script>
+   
+    <script type="text/html" id="tables_travel3">
+         
+               
+                <table id="table">
+                 {{each list  itme}}
+                 <tr>
+	             	<td class="td" align="center">
+	             		<div class="divs1">
+	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.fImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.fImage}}"class="imgs1"></a>
+	             		  	<ul>
+	             				<li>介绍： {{itme.fSketch}}</li>
+	             				<li>地点： {{itme.fAddress}}</li>
+	             				<li>作者： {{itme.fAuthor}}</li>
+	             				<li>人物： {{itme.fPerson}}</li>
+	             				<li>时间： {{itme.fTime}}</li>
+
+	             			</ul>
+	             	    </div>
+	             	</td>               
+                </tr>
+                {{/each}}
+              </table>
+    </script>
+   
+   
+    
+    
+    <script>
+
+      /* 请求数据 */
+       window.onload=function(){ 
+    	   to_page(1);
+    	   $.ajax({	  
+    		   type:"GET",
+    		   url:"http://localhost:8088/record-lives/getPersonalData",
+    		   //contentType: "application/json; charset=utf-8",//传递给后端的数据转为json
+    		   //dataType: "json",	/*后端返回的数据格式json*/
+    		   success:function(data){
+    			   console.log(data);
+    			   var data2 =data.extend.PersonalData; 
+    		/* 	   $each(data2,function(i,result){
+    				   
+    				   
+    			   }); */
+    			   var oBox=document.getElementById('box');
+    			   /* 传入模板 */
+    			   var sHTML = template('tpl',data2)
+    			   oBox.innerHTML=sHTML;
+    			   
+    			   
+    		   }
+    		   
+    	   });
+      }
+    	   /* 页面一加载时显示id数据  */
+    	   function to_page(pn){
+    	   $.ajax({
+        	   url:"http://localhost:8088/record-lives/getAll",
+        	   data:'pn='+pn,
+        	   type:"get",
+        	   success:function(result){
+        			//2.解析并显示分页信息
+        		   build_page_info(result);
+        		    //3.解析分页条数据
+        		   build_page_nav(result)
+        		   console.log(result);
+        	   }
+        	    	 
+          }); 
+    	 }
+    	   
+    	   /* 显示一开始页面加载时的数据和分页条数据 */
+    	   function build_page_info(result){
+    		   console.log(result);
+     		  
+     		  var pcinfo = result.extend.PcInformation.list;
+     		      result.list = pcinfo;
+     		  var nextLi = result.extend.PcInformation.navigatepageNums;    
+     		      result.navigatepageNums = nextLi;
+     	          
+     			 /*  alert(item.pcAuthor); 
+     			  
+     			/*  var data =();
+     			 data.list=pcinfo; */
+     		     
+                 /* 分页数据展示模板  */
+             	 var table=document.getElementById('div_tpl');
+             	 var tHTML=template('tables_travel',result)
+             	 table.innerHTML=tHTML;
+             	 
+             	 $("#table div").mouseout(function(){
+                      $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+                  });
+                  $("#table div").mouseover(function(){
+                 	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+                  });    
+     		   
+                  var results = result.extend.PcInformation;
+                  
+                 /* 分页条数据展示替换模板 */
+                 var tables=document.getElementById('div_paging');
+             	 var tHTMLs=template('pagingTpl',results)
+             	 tables.innerHTML=tHTMLs;
+             	 
+             	 
+            
+                  
+             	     		   
+    	   }
+    	   
+    	  function build_page_nav(result){
+    		   var ul = $("#nav_ul");
+    		   var firstPageLi=$('#home_page');
+    		   var prePageLi =$('#next_page');
+    		   
+    		   if(result.extend.PcInformation.hasPreviousPage==false){
+    			   firstPageLi.addClass("disabled");
+    			   prePageLi.addClass("disabled");
+    			   
+    		   }else{
+    			 //为元素添加点击翻页的事件 
+    				firstPageLi.click(function() {
+    					to_page(1);
+    				});
+    				prePageLi.click(function() {
+    					to_page(result.extend.PcInformation.pageNum - 1);
+
+    				});
+
+    			   
+    		   }
+    		   
+    		   var lastPageLi=$('#back_page');
+    		   var nextPageLi =$('#up_page');
+    		   
+    		   if(result.extend.PcInformation.hasNextPage==false){
+    			   nextPageLi.addClass("disabled");
+    			   lastPageLi.addClass("disabled");
+    			   
+    		   }else{
+    			 //为元素添加点击翻页的事件 
+    			 	nextPageLi.click(function() {
+    					to_page(result.extend.PcInformation.pageNum + 1);
+    				});
+
+    				lastPageLi.click(function() {
+    					to_page(result.extend.PcInformation.pages);
+    				});
+    			
+    			   
+    		   }
+    			//1.2.3遍历给ul中添加页码提示
+    		   $.each(result.extend.PcInformation.navigatepageNums, function(index, item) {
+                
+    				var numLi = $("#span_li li");
+    				if (result.extend.PcInformation.navigatepageNums.pageNum == item) {
+    					numLi.addClass("active");
+                      
+    				}
+    				   numLi.click(function() {
+    						to_page(item);
+    					}); 
+    				
+    			});
+    		
+
+    		}
+    		   
+ 
+    	   
+    	   
+    	   
+    	   
+    	   
+    	   
+    	   
+    
+       
+       
+    
+    </script>
+		
+		
+	<style>
+	</style>
+	     <body>
+	     	  <!--头像部分——————————————————————————————————————————————————————————————————————————-->
+	        <div class="row" id="head-div"></div> 
+		  <div class="row">
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-4" id="div-global">
+			   
+			  <div class="head-div2" id="title_pc">
+			  	<a href="#"><img style="float: left;" class="img-head" src="static/imgs/家人-choose-19.png"/></a>
+			     </div>
+			  
+			  	  <!--个人资料模块-->
+			     <div class="head_div_title"  id="box">
+			  	 
+			    </div>
+			 
+			
+          </div>
+	       </div>
+	      <!--——————————————————————————————————————————————————————————————————————————————————————————-->
+	      
+	      <!--搜索框栏-------------------------------------------------------------------->
+			<div class="row">
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-4" id="div-global">
+        
+		       <div class="search bar7">
+                 <form class="form" id="form1">
+                    <input type="text" id="pcId" name="pcId" placeholder="请输入您要搜索的内容...">
+                    <button type="button" id="btn_search"><img class="img" src="static/imgs/搜索4.png"/></button>
+                 </form>
+                   </div> 
+                      <a href="http://localhost:8088/record-lives/selectUploading.html"><input style="width: 580px;height: 40px;" class="btn btn-success"  type="button" value="记录图片" id="record"/></a>  
+                   </div>
+           
+               </div> 
+           </div>
+			  </div>
+      	  </div>
+      	  <!-------------------------------------------------------------------------------------->
+      	  
+      	  <!--图片分类栏——————————————————————————————————————————————————————————————————————————————-->
+      	<div class="row">
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-4"id="from-div">
+			  <div class="btn_div" id="div-global-Test"><button class="btn-btns"><img class="btn-img" src="static/imgs/旅游.png"/>旅游</button></div>
+              <div class="btn_div" id="div-global-Test1"><button class="btn-btns"><img class="btn-img" src="static/imgs/生活.png"/>生活</button></div>
+              <div class="btn_div" id="div-global-Test2"><button class="btn-btns"><img class="btn-img" src="static/imgs/自拍杆.png"/>自拍</button></div>
+              <div class="btn_div" id="div-global-Test3"><button class="btn-btns"><img class="btn-img" src="static/imgs/家人-choose-19.png"/>家人</button></div>
+              </div>
+          </div>
+		  <!--————————————————————————————————————————————————————————————————————————————————————————————————-->
+		  
+		   <!--图片内容显示-------------------------------------------->
+		  <div class="row">
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-4" id="div-global">
+			  <div id="div_tpl">
+			  <table id="table">
+	             <tr>
+	             	<td class="td" align="center">
+	             		<div class="divs1" >
+	             		  <img src="static/imgs/dd.jpg"class="imgs1">
+	             		  	<ul>
+	             				<li>介绍：黄土高坡的一处角景色</li>
+	             				<li>地点：黄土高坡</li>
+	             				<li>作者：杨洒</li>
+	             				<li>人物：杨洒，杨义，杨斌</li>
+	             				<li>时间：2019/5/1/12:20:23</li>
+	             			</ul>
+	             	    </div>
+	             	</td>
+	          
+	             	</tr>
+	             	<tr>
+	             	     	
+	             	<td class="td" align="center">
+	             		<div class="divs1">
+	             		  <img src="static/imgs/dd.jpg"class="imgs1">
+	             		  	<ul>
+	             				<li>介绍：黄土高坡的一处角景色</li>
+	             				<li>地点：黄土高坡</li>
+	             				<li>作者：杨洒</li>
+	             				<li>人物：杨洒，杨义，杨斌</li>
+	             				<li>时间：2019/5/1/12:20:23</li>
+	             			</ul>
+	             	    </div>
+	             	</td>
+	             	</tr>
+	             
+			  </table> 
+			  </div> 	
+		
+		  </div>
+	      </div>
+		<!--------------------------------------------------------------------------->
+		
+		<!-- 分页条 -->
+		<div style="margin-top: 10px; width: 100%;height: 100px;border: solid 0px red;text-align: center;" id="div_paging">
+           
+		</div>
+		  
+		  <!--结尾部分尾言----------------------------------------------------------------->
+		  <div class="row" id="head-div"></div>
+		  <div class="row">
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-1"></div>
+			  <div class="col-md-4" id="div-global" style="background: white;height: 100px;text-align: center;opacity: 0.5;border-radius:40px ;">
+			  <ul>
+				  <li><span><font>www.yangsa.com ——联系： 17352653641</font></span></li>
+				  <li><span><font>简介：先就随便说几句</font></span></li>
+				  <li><span><font>工商备案号：*********</font></span></li>
+			  	<!--<button class="btn btn-success" style="width: 100px;height: 50px;"><font size="4">提交</font></button>-->
+			  </ul>
+			  </div>
+	      </div>
+		<!------------------------------------------------------------------------------------>
+		
+	</body>
+</html>
+<script>
+     $(document).ready(function(){
+    	 
+     $("#from-div div").mouseout(function(){
+       	 $(this).css("background-color","white"); 	 
+      });
+     $("#from-div div").mouseover(function(){
+    	 $(this).css("background-color","#F2DEDE");
+     });
+    
+     
+     $("#box").mouseout(function(){
+         $(this).css("box-shadow","0px 0px 10px 5px white");
+     });
+     $("#box").mouseover(function(){
+    	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+     });  
+
+     $("#title_pc").mouseout(function(){
+         $(this).css("box-shadow","0px 0px 10px 5px white");
+     });
+     $("#title_pc").mouseover(function(){
+    	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+     });  
+     
+     $("#table div").mouseout(function(){
+         $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+     });
+     $("#table div").mouseover(function(){
+    	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+     });    
+     
+     });
+
+ 
+     $("#btn_search").click(function(){
+    	$.ajax({
+             type:"get",
+             url:"http://localhost:8088/record-lives/getPcInfromationById",
+             data:$("#form1").serialize(),
+             success:function(result){
+            	 console.log(result);
+            	 var data3 = result.extend.PcInfromation; 
+            	 
+            	 var ttable=document.getElementById('div_tpl');
+            	 var tHTML=template('tables',data3)
+            	 ttable.innerHTML=tHTML;
+            	 
+            	 $("#table div").mouseout(function(){
+                     $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+                 });
+                 $("#table div").mouseover(function(){
+                	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+                 });    
+            	 
+             }
+    		
+    	});
+     });
+
+     $("#div-global-Test").click(function(){
+       $.ajax({
+    	   type:"get",
+    	   url:"http://localhost:8088/record-lives/getAll",
+    	   success:function(result){
+    		   console.log(result);
+    		  var pcinfo = result.extend.PcInformation.list;
+    		  
+    		      result.list = pcinfo;
+    	          
+    			 /*  alert(item.pcAuthor); 
+    			  
+    			/*  var data =();
+    			 data.list=pcinfo; */
+    		     
+            
+            	 var table=document.getElementById('div_tpl');
+            	 var tHTML=template('tables_travel',result)
+            	 table.innerHTML=tHTML;
+            	 
+            	 $("#table div").mouseout(function(){
+                     $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+                 });
+                 $("#table div").mouseover(function(){
+                	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+                 });    
+    		   
+    	   }
+    	    	 
+      }); 
+    	 
+     });
+ 
+     $("#div-global-Test2").click(function(){
+    	
+    	 $.ajax({
+    		type:"get",
+    		url:"http://localhost:8088/record-lives/getAutodyneAll", 
+    		success:function(result){
+    			console.log(result);
+    			 var autodyne = result.extend.autodyne.list;
+    			result.list=autodyne;
+    			
+    			var table = document.getElementById('div_tpl');
+    			var tHTML = template('tables_travel2',result)
+    			table.innerHTML=tHTML;
+    			 $("#table div").mouseout(function(){
+                     $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+                 });
+                 $("#table div").mouseover(function(){
+                	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+                 });    
+    			
+    		}
+    		 
+    		 
+    	 });
+    	 
+    	 
+    	 
+     });
+     
+
+     $("#div-global-Test3").click(function(){
+    	
+    	 $.ajax({
+    		type:"get",
+    		url:"http://localhost:8088/record-lives/getFamilyAll", 
+    		success:function(result){
+    			console.log(result);
+    			var family = result.extend.family.list;
+    			result.list=family;
+    			
+    			var table = document.getElementById('div_tpl');
+    			var tHTML = template('tables_travel3',result)
+    			table.innerHTML=tHTML;
+    			 $("#table div").mouseout(function(){
+                     $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+                 });
+                 $("#table div").mouseover(function(){
+                	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+                 });    
+    			
+    		}
+    		 
+    		 
+    	 });
+    	 
+    	 
+    	 
+     });
+     
+
+     $("#div-global-Test1").click(function(){
+    	
+    	 $.ajax({
+    		type:"get",
+    		url:"http://localhost:8088/record-lives/getLiveAll", 
+    		success:function(result){
+    			console.log(result);
+    			var live = result.extend.live.list;
+    			result.list=live;
+    			
+    			var table = document.getElementById('div_tpl');
+    			var tHTML = template('tables_travel1',result)
+    			table.innerHTML=tHTML;
+    			 $("#table div").mouseout(function(){
+                     $(this).css("box-shadow","0px 0px 10px 5px #F2DEDE");
+                 });
+                 $("#table div").mouseover(function(){
+                	 $(this).css("box-shadow","0px 0px 10px 5px #F0AD4E");
+                 });    
+    			
+    		}
+    		 
+    		 
+    	 });
+    	 
+    	 
+    	 
+     });
+     
+       
+
+
+
+
+
+
+
+	
+</script>

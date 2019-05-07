@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.jiulvxing.resources.dao.ShowPcAllMapper">
+     <cache></cache>
+   <!--   <resultMap type="com.jiulvxing.resources.bean.PcInformation" id="PcInformationResultMap">
+        <id column="pc_id" jdbcType="INTEGER" property="pcId"/>
+        <result column="pc_image" jdbcType="VARCHAR" property="pcImage"/>
+        <result column="pc_sketch" jdbcType="VARCHAR" property="pcSketch"/>
+        <result column="pc_address" jdbcType="VARCHAR" property="pcAddress"/>
+        <result column="pc_person" jdbcType="VARCHAR" property="pcPerson"/>
+        <result column="pc_time" javaType="VARCHAR" property="pcTime"/>
+     </resultMap> -->
+
+      <select id="selectAutodyneAll" resultType="com.jiulvxing.resources.bean.Autodyne">
+         SELECT a_id aId , a_image aImage , a_sketch aSketch , a_address aAddress,a_person aPerson , a_time aTime, a_author aAuthor  FROM pc_autodyne
+     </select>
+
+     <select id="selectFamilyAll" resultType="com.jiulvxing.resources.bean.Family">
+         SELECT f_id fId , f_image fImage , f_sketch fSketch ,f_address fAddress,f_person fPerson , f_time fTime, f_author fAuthor  FROM pc_family
+     </select>
+       
+     <select id="selectLiveAll" resultType="com.jiulvxing.resources.bean.Live">
+         SELECT l_id lId , l_image lImage , l_sketch lSketch , l_address lAddress, l_person lPerson , l_time lTime, l_author lAuthor  FROM pc_live
+     </select>  
+
+      
+     
+     </mapper>
