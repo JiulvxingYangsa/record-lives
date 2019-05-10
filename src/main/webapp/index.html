@@ -43,7 +43,7 @@
                  <tr>
 	             	<td class="td" align="center">
 	             		<div class="divs1">
-	             		  <a href="http://localhost:8088/record-lives/loald/{{pcImage}}"><img src="http://localhost:8088/record-lives/loald/{{pcImage}}"class="imgs1"></a>
+	             		  <a href="http://120.78.199.50:8081/record/loald/{{pcImage}}"><img src="http://120.78.199.50:8081/record/loald/{{pcImage}}"class="imgs1"></a>
 	             		  	<ul>
 	             				<li>介绍：{{pcSketch}}</li>
 	             				<li>地点：{{pcAddress}}</li>
@@ -65,7 +65,7 @@
                  <tr>
 	             	<td class="td" align="center">
 	             		<div class="divs1">
-	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.pcImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.pcImage}}"class="imgs1"></a>
+	             		  <a href="http://120.78.199.50:8081/record/loald/{{itme.pcImage}}"><img src="http://120.78.199.50:8081/record/loald/{{itme.pcImage}}"class="imgs1"></a>
 	             		  	<ul>
 	             				<li>介绍： {{itme.pcSketch}}</li>
 	             				<li>地点： {{itme.pcAddress}}</li>
@@ -92,7 +92,7 @@
                  <tr>
 	             	<td class="td" align="center">
 	             		<div class="divs1">
-	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.lImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.lImage}}"class="imgs1"></a>
+	             		  <a href="http://120.78.199.50:8081/record/loald/{{itme.lImage}}"><img src="http://120.78.199.50:8081/record/loald/{{itme.lImage}}"class="imgs1"></a>
 	             		  	<ul>
 	             				<li>介绍： {{itme.lSketch}}</li>
 	             				<li>地点： {{itme.lAddress}}</li>
@@ -116,7 +116,7 @@
                  <tr>
 	             	<td class="td" align="center">
 	             		<div class="divs1">
-	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.aImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.aImage}}"class="imgs1"></a>
+	             		  <a href="http://120.78.199.50:8081/record/loald/{{itme.aImage}}"><img src="http://120.78.199.50:8081/record/loald/{{itme.aImage}}"class="imgs1"></a>
 	             		  	<ul>
 	             				<li>介绍： {{itme.aSketch}}</li>
 	             				<li>地点： {{itme.aAddress}}</li>
@@ -140,7 +140,7 @@
                  <tr>
 	             	<td class="td" align="center">
 	             		<div class="divs1">
-	             		  <a href="http://localhost:8088/record-lives/loald/{{itme.fImage}}"><img src="http://localhost:8088/record-lives/loald/{{itme.fImage}}"class="imgs1"></a>
+	             		  <a href="http://120.78.199.50:8081/record/loald/{{itme.fImage}}"><img src="http://120.78.199.50:8081/record/loald/{{itme.fImage}}"class="imgs1"></a>
 	             		  	<ul>
 	             				<li>介绍： {{itme.fSketch}}</li>
 	             				<li>地点： {{itme.fAddress}}</li>
@@ -166,7 +166,7 @@
     	   to_page(1);
     	   $.ajax({	  
     		   type:"GET",
-    		   url:"http://localhost:8088/record-lives/getPersonalData",
+    		   url:"http://120.78.199.50:8081/record/getPersonalData",
     		   //contentType: "application/json; charset=utf-8",//传递给后端的数据转为json
     		   //dataType: "json",	/*后端返回的数据格式json*/
     		   success:function(data){
@@ -189,7 +189,7 @@
     	   /* 页面一加载时显示id数据  */
     	   function to_page(pn){
     	   $.ajax({
-        	   url:"http://localhost:8088/record-lives/getAll",
+        	   url:"http://120.78.199.50:8081/record/getAll",
         	   data:'pn='+pn,
         	   type:"get",
         	   success:function(result){
@@ -494,7 +494,7 @@
      $("#btn_search").click(function(){
     	$.ajax({
              type:"get",
-             url:"http://localhost:8088/record-lives/getPcInfromationById",
+             url:"http://120.78.199.50:8081/record/getPcInfromationById",
              data:$("#form1").serialize(),
              success:function(result){
             	 console.log(result);
@@ -519,7 +519,7 @@
      $("#div-global-Test").click(function(){
        $.ajax({
     	   type:"get",
-    	   url:"http://localhost:8088/record-lives/getAll",
+    	   url:"http://120.78.199.50:8081/record/getAll",
     	   success:function(result){
     		   console.log(result);
     		  var pcinfo = result.extend.PcInformation.list;
@@ -553,7 +553,7 @@
     	
     	 $.ajax({
     		type:"get",
-    		url:"http://localhost:8088/record-lives/getAutodyneAll", 
+    		url:"http://120.78.199.50:8081/record/getAutodyneAll", 
     		success:function(result){
     			console.log(result);
     			 var autodyne = result.extend.autodyne.list;
@@ -583,7 +583,7 @@
     	
     	 $.ajax({
     		type:"get",
-    		url:"http://localhost:8088/record-lives/getFamilyAll", 
+    		url:"http://120.78.199.50:8081/record/getFamilyAll", 
     		success:function(result){
     			console.log(result);
     			var family = result.extend.family.list;
@@ -613,7 +613,7 @@
     	
     	 $.ajax({
     		type:"get",
-    		url:"http://localhost:8088/record-lives/getLiveAll", 
+    		url:"http://120.78.199.50:8081/record/getLiveAll", 
     		success:function(result){
     			console.log(result);
     			var live = result.extend.live.list;
