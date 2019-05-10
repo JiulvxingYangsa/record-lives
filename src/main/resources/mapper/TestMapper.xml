@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
      <mapper namespace="com.jiulvxing.resources.dao.TestMapper">
-     <cache></cache>
+   
    <!--   <resultMap type="com.jiulvxing.resources.bean.PcInformation" id="PcInformationResultMap">
         <id column="pc_id" jdbcType="INTEGER" property="pcId"/>
         <result column="pc_image" jdbcType="VARCHAR" property="pcImage"/>
@@ -25,7 +25,7 @@
         (#{pcImage,jdbcType=VARCHAR},#{pcSketch,jdbcType=VARCHAR},#{pcAddress,jdbcType=VARCHAR},#{pcPerson,jdbcType=VARCHAR},#{pcTime,jdbcType=VARCHAR},#{pcAuthor,jdbcType=VARCHAR},#{pcName,jdbcType=VARCHAR})
      </insert>
 
-     <select id="selectById" resultType="com.jiulvxing.resources.bean.PcInformation" useCache="true">
+     <select id="selectById" resultType="com.jiulvxing.resources.bean.PcInformation" ><!-- useCache="true"开启二级缓存 -->
          SELECT pc_image pcImage , pc_sketch pcSketch , pc_address pcAddress , 
          pc_person pcPerson , pc_time pcTime , pc_author pcAuthor , pc_name pcName
          FROM pc_information WHERE pc_id = #{pcId,jdbcType=INTEGER}
